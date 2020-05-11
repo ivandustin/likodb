@@ -14,11 +14,17 @@ function main() {
 function processArguments(argv) {
     getopt(argv, function(option, value) {
         switch(option) {
+            case 'p':
+                settings.httpPort = +value
+                return true
             case 'help':
-                console.log('Usage: likodb <database path>')
-                console.log('Example: likodb path/to/database.likodb')
+                console.log('Usage: likodb [options] <database path>')
+                console.log('Options:')
+                console.log('    -p <port>      Change the HTTP port number. Default is 5000.')
                 console.log('')
                 console.log('likodb - %s', package.description)
+                console.log('')
+                console.log('Example: likodb myapp.likodb')
                 process.exit(0)
             case 'V':
                 console.log('%s %s', package.name, package.version)
