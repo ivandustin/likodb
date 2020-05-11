@@ -1,0 +1,11 @@
+sqlite=require('sqlite3')
+db=new sqlite.Database(':memory:')
+db.serialize(function() {
+    db.exec('create table person (name text, age integer)')
+    db.exec('insert into person (name, age) values ("ivan", 26), ("dustin", 26)')
+    db.exec('create index person_index on person(age)')
+    db.all('select *, rowid from person', (err, rows)=> console.log(rows))
+    db.all('explain query plan select * from person where age=26 ORDER BY rowid DESC LIMIT 1', (err, rows)=> console.log(rows))
+    db.all('explain query plan select * from sqlite_master where name="person"', (err, rows)=> console.log(rows))
+    db.all('explain query plan select * from person where rowid=1', (err, rows)=> console.log(rows))
+})

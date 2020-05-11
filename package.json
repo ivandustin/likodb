@@ -1,0 +1,21 @@
+{
+	"name": "likodb",
+	"version": "0.1.0",
+	"description": "A general-purpose REST API backend database",
+	"author": {
+		"name": "Ivan Dustin B. Bilon",
+		"email": "ivan22.dust@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ivandustin/likodb"
+	},
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"formidable": "1.x",
+		"better-sqlite3": "7.x"
+	},
+	"bin": {
+		"likodb": "./index.js"
+	}
+}
